@@ -1,4 +1,4 @@
-'''
+"""
 Status: pre-nominees, nominees, Journeyman & Graduates
 
 profile.status.currentStatus: ["25", "30", "40", "50"]}
@@ -6,15 +6,16 @@ profile.status.currentStatus: ["25", "30", "40", "50"]}
 fields: E-Mail-Adresse, Telefonnummer, Vorname, Nachname, Ausbildung (bzw. Job), Stadt, Bundesland/Region,
 Land, Postleitzahl, Geburtsdatum, Geburtsjahr, Geschlecht, Alter
 
-'''
+"""
 from datetime import datetime
 from os import walk
 import json
 import csv
 
 crt_year = datetime.today().year
+src_folder = 'dump/journeymanBackend-prod-talent/data'
 
-_, _, filenames = next(walk('journeymanBackend-prod-talent/data'))
+_, _, filenames = next(walk(src_folder))
 
 idx = 0
 total = 0
@@ -24,7 +25,7 @@ with open('talents.csv', 'w') as csvfile:
     writer.writerow(['email', 'phone', 'first_name', 'last_name', 'education', 'city', 'region', 'country',
                      'postal_code', 'dob', 'year_of_birth', 'gender', 'age'])
     for file in filenames:
-        with open('journeymanBackend-prod-talent/data/' + file) as f:
+        with open(src_folder + '/' + file) as f:
             data = json.load(f)
 
             for item in data['Items']:

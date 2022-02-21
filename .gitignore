@@ -1,8 +1,10 @@
 *.json
 *.csv
-journeymanBackend-prod-talent
+journeymanBackend-prod-talent*
 .idea
 env.py
+dynamodump
+dump
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
